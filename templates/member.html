@@ -1,0 +1,33 @@
+{% extends 'base.html'%}
+
+{% block table %}
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">SR no.</th>
+      <th scope="col">Name</th>
+      <th scope="col">Age</th>
+      <th scope="col">Roll No.</th>
+      <th scope="col">Contact</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody class="table-group-divider">
+  {% for item in items %}
+    <tr>
+      <th scope="row">{{loop.index}}</th>
+      <td>{{item.name}}</td>
+      <td>{{item.age}}</td>
+      <td>{{item.rollno}}</td>
+      <td>{{item.contact}}</td>
+      <td class="inline-flex items-center space-x-1">
+  <button class="m-1"><a href="/more_info/{{item.sno}}" type="button" class="btn btn-outline-dark btn-sm">More Info</a></button>
+<form action="{{ url_for('kick', sno=item.sno) }}" method="post" style="display:inline;">
+          <button type="submit" class="btn btn-outline-dark btn-sm">Kick</button>
+        </form></td>
+
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

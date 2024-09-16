@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block container %}
+<body class="text-center">
+    <div class="d-flex justify-content-center align-items-start" style="min-height: 100vh; padding-top: 20px;">
+        <div class="container" style="max-width: 500px;">
+            <h1 class="display-6 mb-3">Register</h1>
+            <form method="POST" class="form-register" style="color:black">
+                {{ form.hidden_tag() }}
+
+                <!-- Username Field -->
+                <div>
+                    {{ form.username.label }}
+                    {{ form.username(class_="form-control", placeholder="Username") }}
+                </div>
+
+                <!-- Email Field -->
+                <div>
+                    {{ form.email_address.label }}
+                    {{ form.email_address(class_="form-control", placeholder="Email") }}
+                </div>
+
+                <!-- Password Field -->
+                <div>
+                    {{ form.password.label }}
+                    {{ form.password(class_="form-control", placeholder="Password") }}
+                </div>
+
+                <!-- Confirm Password Field -->
+                <div>
+                    {{ form.confirm_password.label }}
+                    {{ form.confirm_password(class_="form-control", placeholder="Confirm Password") }}
+                </div>
+
+                <br>
+
+                <!-- Flex container to keep message and login button on the same line -->
+                <div class="d-flex justify-content-center align-items-center gap-2 mb-3">
+                    <h6 class="mb-0">Already have an account?</h6>
+                    <a class="btn btn-sm btn-secondary" href="{{ url_for('login_user') }}"
+                       style="background-color: #6c757d; color: white; border-radius: 20px; padding: 5px 15px; text-decoration: none;">
+                        Login
+                    </a>
+                </div>
+
+                <!-- Submit button styled -->
+                <button type="submit" class="btn btn-primary" style="width: 50%; padding: 10px; font-size: 16px; background-color: #007bff; border-radius: 20px; border: none;">
+                    {{ form.submit.label }}
+                </button>
+            </form>
+        </div>
+    </div>
+</body>
+{% endblock %}
